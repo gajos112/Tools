@@ -1,6 +1,6 @@
 #! c:\perl\bin\perl.exe
 #-----------------------------------------------------------
-# amsi.pl
+# fakeforum.pl
 # Plugin for Registry Ripper, NTUSER.DAT 
 # AMSI Persistence 
 #
@@ -10,6 +10,7 @@
 #-----------------------------------------------------------
 package amsi;
 use strict;
+use Digest::MD5  qw(md5 md5_hex md5_base64);
 
 my %config = (hive          => "Software",
               hasShortDescr => 1,
@@ -53,10 +54,10 @@ sub pluginmain {
 					if (scalar(@vals) > 0) {
 						foreach my $v (@vals) {
 							my $data = $v->get_data();
-							::rptMsg("Data: ".$data);
+							::rptMsg("Name: ".$data);
 							
 							my $key_path_DLL = "Classes\\CLSID\\" . $name . "\\InProcServer32";
-							::rptMsg("DLL: ".$key_path_DLL);
+							::rptMsg("Path to the CLASS: ".$key_path_DLL);
 							
 							if ($key_to_class = $root_key->get_subkey($key_path_DLL)) {
 								
@@ -87,4 +88,3 @@ sub pluginmain {
 }
 
 1;
-
