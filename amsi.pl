@@ -1,6 +1,6 @@
 #! c:\perl\bin\perl.exe
 #-----------------------------------------------------------
-# fakeforum.pl
+# amsi.pl
 # Plugin for Registry Ripper, NTUSER.DAT 
 # AMSI Persistence 
 #
@@ -10,7 +10,6 @@
 #-----------------------------------------------------------
 package amsi;
 use strict;
-use Digest::MD5  qw(md5 md5_hex md5_base64);
 
 my %config = (hive          => "Software",
               hasShortDescr => 1,
